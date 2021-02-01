@@ -1,6 +1,10 @@
 <template>
   <NavBar />
-  <MainLayoutWrapper> </MainLayoutWrapper>
+  <MainLayoutWrapper>
+    <BaseCard>
+      <Form />
+    </BaseCard>
+  </MainLayoutWrapper>
 </template>
 
 <script>
@@ -8,12 +12,16 @@
 
 import NavBar from "@/components/NavBar";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
+import BaseCard from "@/components/BaseCard";
+import Form from "@/components/Form";
 
 export default {
   name: "Home",
   components: {
     NavBar,
     MainLayoutWrapper,
+    BaseCard,
+    Form,
   },
   data() {
     return {};
