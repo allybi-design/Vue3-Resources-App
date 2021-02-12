@@ -41,11 +41,11 @@
       </select>
     </div>
 
-    <CustomSelect
+    <!-- <CustomSelect
       label="How did you find us (Custon Select Element):"
       v-model:selectedValue="selection"
       :options="['Video', 'Blog', 'Other']"
-    />
+    /> -->
 
     <RadioInput
       label="Rate your skill level:"
@@ -87,10 +87,9 @@
 
 <script>
 import Input from "@/components/Input";
-
 import CheckBox from "@/components/CheckBox";
 import RadioInput from "@/components/RadioInput";
-import CustomSelect from "@/components/CustomSelect.vue";
+// import CustomSelect from "@/components/CustomSelect.vue";
 
 export default {
   name: "Form",
@@ -98,7 +97,7 @@ export default {
     Input,
     RadioInput,
     CheckBox,
-    CustomSelect,
+    // CustomSelect,
   },
   data() {
     return {
