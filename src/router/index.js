@@ -1,25 +1,62 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import TeamsPage from "../views/TeamsPage.vue";
+
+// const isAuthenticated = true; //can set if path if is Authenticated in next()
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    redirect: "/teams",
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/teams",
+    name: "Teams",
+    component: TeamsPage,
+  },
+  {
+    path: "/teams/:deptId",
+    name: "TeamsMembers",
+    meta: { needsAuth: true },
+    beforeEnter(to, from, next) {
+      if (to.meta.needsAuth) {
+        console.log("this path need Auth");
+        next();
+      }
+    },
+    component: () => import("../views/TeamMembersPage.vue"),
+  },
+  {
+    path: "/users",
+    name: "Users",
+    beforeEnter(to, from, next) {
+      //individual route guard
+      console.log("Users Guard"); //call only when exec to
+      console.log(to, from); //this ("/users") path
+      next();
+    },
+    component: () => import("../views/UsersPage.vue"),
+  },
+  {
+    path: "/:notFound(.*)",
+    redirect: "/teams",
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  linkActiveClass: "active",
+  linkExactActiveClass: "exact-active",
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    return { left: 0, top: 0 };
+  },
+  routes,
+});
 
-export default router
+//All Route Guards - exec` before each route called
+router.beforeEach((to, from, next) => {
+  console.log(to, from);
+  next();
+});
+
+export default router;

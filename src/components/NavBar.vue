@@ -1,18 +1,26 @@
 <template>
-  <div class="titleBar">
-    <div class="container text-center">
-      <h1>Vue 3 Http Request</h1>
+  <nav class="navbar navbar-expand ">
+    <div class="container ">
+      <div class="collapse navbar-collapse" >
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <router-link class="nav-link " to="/teams">Teams</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/users">Users</router-link>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "NavBar",
+};
 </script>
 
 <style lang="scss" scoped>
-.titleBar {
-  background-color: rgb(212, 212, 212);
-  padding: 1rem 0;
-}
+
 </style>
