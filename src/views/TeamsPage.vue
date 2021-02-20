@@ -1,7 +1,6 @@
 <template>
   <MainLayoutWrapper>
     <TeamsList :teams="teams" />
-   
   </MainLayoutWrapper>
 </template>
 

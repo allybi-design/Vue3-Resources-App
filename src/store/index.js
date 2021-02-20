@@ -38,5 +38,8 @@ export default createStore({
 
       return selectedMembers;
     },
+    getDeptName: (state) => (deptId) => {
+      return state.teams.find((team) => team.deptId === Number(deptId)).dept;
+    },
   },
 });

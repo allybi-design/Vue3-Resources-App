@@ -1,7 +1,7 @@
 <template>
   <MainLayoutWrapper>
     <div>
-      <h1>List of xxxx Dept.</h1>
+      <h1>List of {{deptName}} in Dept.</h1>
     </div>
     <BaseCard v-for="member in members" :key="member.id">
       <User :user="member"/>
@@ -26,6 +26,9 @@ export default {
     members() {
       return this.$store.getters.getFilteredUsers(this.$route.params.deptId);
     },
+    deptName() {
+      return this.$store.getters.getDeptName(this.$route.params.deptId)
+    }
   },
 };
 </script>
