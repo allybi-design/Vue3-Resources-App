@@ -1,36 +1,45 @@
 <template>
   <div class="titleBar text-center">
-    <h1>Routes</h1>
+    <h1>Animations</h1>
   </div>
-
-  <NavBar />
-
-  <router-view />
+  <MainLayoutWrapper id="mainWrapper">
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component" />
+      </transition>
+    </router-view>
+  </MainLayoutWrapper>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar";
+import MainLayoutWrapper from "./components/MainLayoutWrapper.vue";
 
 export default {
+  components: { MainLayoutWrapper },
   name: "app",
-  components: {
-    NavBar,
-  },
 };
 </script>
+
 <style>
 .titleBar {
   background-color: rgb(212, 212, 212);
   padding: 1rem 0;
 }
 
-a.active {
-  color: #ff0000;
-  text-decoration: underline !important;
+.route-enter-active {
+  animation: fade .2s ease-out reverse;
+}
+.route-leave-active {
+  animation: fade .2s ease-out;
 }
 
-a.exact-active {
-  color: #00ff00;
-  text-decoration: underline !important;
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 </style>

@@ -1,13 +1,13 @@
 <template>
   <nav class="navbar navbar-expand ">
     <div class="container ">
-      <div class="collapse navbar-collapse" >
+      <div class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link " to="/teams">Teams</router-link>
+            <router-link class="nav-link " to="/">Home Page</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/users">Users</router-link>
+            <router-link class="nav-link" to="/about">About Page</router-link>
           </li>
         </ul>
       </div>
@@ -21,6 +21,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
