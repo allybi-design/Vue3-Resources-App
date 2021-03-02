@@ -1,22 +1,36 @@
 <template>
   <div class="titleBar text-center">
-    <h1>Animations</h1>
+    <h1>Vuex</h1>
   </div>
   <MainLayoutWrapper id="mainWrapper">
-    <router-view v-slot="slotProps">
-      <transition name="route" mode="out-in">
-        <component :is="slotProps.Component" />
-      </transition>
-    </router-view>
+    <NavBar />
+    <router-view></router-view>
   </MainLayoutWrapper>
 </template>
 
 <script>
 import MainLayoutWrapper from "./components/MainLayoutWrapper.vue";
+import NavBar from "./components/NavBar";
 
+import { mapGetters, mapActions } from "vuex";
 export default {
-  components: { MainLayoutWrapper },
   name: "app",
+  components: { MainLayoutWrapper, NavBar },
+  computed: {
+    ...mapGetters({
+      isAuth: "getIsUserAuth",
+    }),
+  },
+  methods: {
+    ...mapActions(),
+
+    // add(value) {
+    //   this.incCounter(value);
+    // },
+    // inc(value) {
+    //   this.INC_COUNTER(value);
+    // },
+  },
 };
 </script>
 
@@ -24,22 +38,5 @@ export default {
 .titleBar {
   background-color: rgb(212, 212, 212);
   padding: 1rem 0;
-}
-
-.route-enter-active {
-  animation: fade .2s ease-out reverse;
-}
-.route-leave-active {
-  animation: fade .2s ease-out;
-}
-
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
 }
 </style>
