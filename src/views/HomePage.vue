@@ -1,5 +1,5 @@
 <template>
-  <BaseCard>
+  <BaseCard >
     <h1>Home Page</h1>
   </BaseCard>
 </template>

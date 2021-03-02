@@ -7,7 +7,17 @@ import bootstrap from "bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css";
 
+import {
+  FontAwesomeIcon,
+  FontAwesomeLayers,
+  FontAwesomeLayersText,
+} from "@fortawesome/vue-fontawesome";
+
 const app = createApp(App);
+
+app.component("fa-icon", FontAwesomeIcon);
+app.component("fa-layers", FontAwesomeLayers);
+app.component("fa-layers-text", FontAwesomeLayersText);
 
 app.use(bootstrap);
 app.use(store);
