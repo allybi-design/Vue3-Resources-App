@@ -20,6 +20,7 @@
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.1",
     "storybook-facelift": "^6.2.0",
+    "uuid": "^8.3.2",
     "vue": "^3.0.7",
     "vue-router": "^4.0.4",
     "vuex": "^4.0.0"
@@ -49,13 +50,12 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/vue3-essential",
+      "plugin:vue/essential",
       "eslint:recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
-    },
-    "rules": {}
+    }
   },
   "browserslist": [
     "> 1%",

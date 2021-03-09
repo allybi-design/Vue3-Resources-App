@@ -1,30 +1,26 @@
 <template>
-  <div class="titleBar text-center">
-    <h1>Main Project</h1>
-  </div>
-  <MainLayoutWrapper id="mainWrapper">
-    <NavBar />
+  <NavBar />
+  <div class="container mt-3">
     <router-view></router-view>
-  </MainLayoutWrapper>
+  </div>
 </template>
 
 <script>
-import MainLayoutWrapper from "./components/MainLayoutWrapper.vue";
-import NavBar from "./components/NavBar";
+import NavBar from "@/components/NavBar";
 
 export default {
   name: "app",
-  components: { MainLayoutWrapper, NavBar },
+  components: { NavBar },
 };
 </script>
 
 <style>
-.titleBar {
-  background-color: rgb(212, 212, 212);
-  padding: 1rem 0;
+a {
+  text-decoration: none !important;
 }
 
-a.active {
+a.active,
+a.exact-active {
   text-decoration: underline !important;
 }
 </style>

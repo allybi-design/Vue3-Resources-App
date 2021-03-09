@@ -1,17 +1,10 @@
 <template>
-  <BaseCard >
-    <h1>Home Page</h1>
-  </BaseCard>
+  <h1>Home Page</h1>
 </template>
 
 <script>
-import BaseCard from "../components/BaseCard.vue";
-
 export default {
   name: "HomePage",
-  components: {
-    BaseCard,
-  },
 };
 </script>
 

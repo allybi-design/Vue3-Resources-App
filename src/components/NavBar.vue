@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand ">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="container ">
       <router-link class="navbar-brand" to="/">
         <fa-layers full-width class="fa-2x">
-          <fa-icon :icon="userSecretIcon" />
+          <fa-icon :icon="runningIcon" />
           <!-- <fa-layers-text
             class="text-danger"
             transform="shrink-4"
@@ -12,25 +12,29 @@
         </fa-layers>
       </router-link>
 
-      <router-link class="nav-link" to="/about">About</router-link>
       <div class="collapse navbar-collapse">
-        <ul v-if="isAuth" class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link " to="/products"
-              >Products
-            </router-link>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link " to="/coaches">Coaches</router-link>
+          </li>
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link" to="/register">Register</router-link>
+          </li>
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link" to="/requests">Request</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/cart">Cart</router-link>
+            <router-link class="nav-link" to="/contact-us"
+              >Contact Us</router-link
+            >
           </li>
         </ul>
       </div>
-    </div>
+      >
 
-    <div v-if="isAuth" class="">Cart Qty:{{ cartQty }}</div>
-
-    <div class="d-flex">
-      <userAuth />
+      <div class="d-flex">
+        <userAuth />
+      </div>
     </div>
   </nav>
 </template>
@@ -40,9 +44,7 @@ import UserAuth from "../components/UserAuth";
 
 import { mapGetters } from "vuex";
 
-// import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret, faCrown } from "@fortawesome/free-solid-svg-icons";
+import { faRunning } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   name: "NavBar",
@@ -51,8 +53,7 @@ export default {
   },
   data() {
     return {
-      crownIcon: faCrown,
-      userSecretIcon: faUserSecret,
+      runningIcon: faRunning,
     };
   },
   computed: {

@@ -19,6 +19,7 @@ export default {
 
     logIn() {
       this.signIn();
+      this.$router.push("/coaches")
     },
     logOut() {
       this.signOut();

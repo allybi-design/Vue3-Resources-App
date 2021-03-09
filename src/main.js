@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import BaseCard from "./components/BaseCard";
+import BaseButton from "./components/BaseButton"
+
 import bootstrap from "bootstrap";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,6 +17,9 @@ import {
 } from "@fortawesome/vue-fontawesome";
 
 const app = createApp(App);
+
+app.component("BaseCard", BaseCard)
+app.component("BaseButton", BaseButton)
 
 app.component("fa-icon", FontAwesomeIcon);
 app.component("fa-layers", FontAwesomeLayers);

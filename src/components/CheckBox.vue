@@ -1,7 +1,7 @@
 <template>
   <div class="form-check">
     <input
-      class="form-check-input"
+      class="btn-check"
       type="checkbox"
       :checked="checked"
       :id="fieldId"
@@ -9,7 +9,7 @@
       v-bind="$attrs"
       @input="check()"
     />
-    <label class="form-check-label" :for="fieldId">
+    <label class="btn btn-outline-primary" :for="fieldId">
       {{ value }}
     </label>
   </div>

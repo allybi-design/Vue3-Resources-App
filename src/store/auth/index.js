@@ -1,6 +1,6 @@
 const auth = {
   state: {
-    isAuth: false,
+    isAuth: true,
   },
   mutations: {
     SET_AUTH(state, payload) {
