@@ -1,18 +1,68 @@
 <template>
-  <div class="titleBar">
-    <div class="container text-center">
-      <h1>Vue 3 Resources</h1>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container ">
+      <router-link class="navbar-brand" to="/">
+        <fa-layers full-width class="fa-2x">
+          <fa-icon :icon="runningIcon" />
+          <!-- <fa-layers-text
+            class="text-danger"
+            transform="shrink-4"
+            value="User Secret"
+          /> -->
+        </fa-layers>
+      </router-link>
+
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link " to="/coaches">Coaches</router-link>
+          </li>
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link" to="/register">Register</router-link>
+          </li>
+          <li v-if="isAuth" class="nav-item">
+            <router-link class="nav-link" to="/requests">Request</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/contact-us"
+              >Contact Us</router-link
+            >
+          </li>
+        </ul>
+      </div>
+      >
+
+      <div class="d-flex">
+        <userAuth />
+      </div>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
-export default {};
+import UserAuth from "../components/UserAuth";
+
+import { mapGetters } from "vuex";
+
+import { faRunning } from "@fortawesome/free-solid-svg-icons";
+
+export default {
+  name: "NavBar",
+  components: {
+    UserAuth,
+  },
+  data() {
+    return {
+      runningIcon: faRunning,
+    };
+  },
+  computed: {
+    ...mapGetters({
+      isAuth: "getIsUserAuth",
+      cartQty: "getCartQty",
+    }),
+  },
+};
 </script>
 
-<style lang="scss" scoped>
-.titleBar {
-  background-color: rgb(212, 212, 212);
-  padding: 1rem 0;
-}
-</style>
+<style lang="scss" scoped></style>

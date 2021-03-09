@@ -1,25 +1,85 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from "vue-router";
+
+import HomePage from "../views/HomePage";
+
+import store from "../store";
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/",
+    name: "HomePage",
+    component: HomePage,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/contact-us",
+    name: "ContactUsPage",
+    component: () => import("../views/ContactUsPage.vue"),
+  },
+  {
+    path: "/coaches",
+    name: "CoachesListpage",
+    meta: { requiresAuth: true },
+    component: () => import("../views/CoachesListPage.vue"),
+  },
+  {
+    path: "/coaches/:id",
+    name: "CoachDetailsPage",
+    props: true,
+    meta: { requiresAuth: true },
+    component: () => import("../views/CoachDetailsPage.vue"),
+    children: [
+      {
+        path: "contact",
+        name: "CoachContactPage",
+        meta: { requiresAuth: true },
+        component: () => import("../views/CoachContactPage.vue"),
+      },
+    ],
+  },
+  {
+    path: "/coach-register",
+    name: "CoachRegisterPage.",
+    meta: { requiresAuth: true },
+    component: () => import("../views/CoachRegisterPage.vue"),
+  },
+  {
+    path: "/requests",
+    name: "Requests",
+    meta: { requiresAuth: true },
+    component: () => import("../views/RequestsPage.vue"),
+  },
+  {
+    path: "/:notFound(.*)",
+    redirect: "/",
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
-})
+  linkActiveClass: "active",
+  linkExactActiveClass: "exact-active",
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return savedPosition;
+    return { left: 0, top: 0 };
+  },
+  routes,
+});
 
-export default router
+router.beforeEach((to, from, next) => {
+  const isUserAuth = store.getters.getIsUserAuth;
+
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (isUserAuth) {
+      // console.log("user is logged in");
+      return next();
+    } else {
+      // console.log("Access denied!");
+      next("/");
+    }
+    next("/");
+  } else {
+    next();
+  }
+});
+
+export default router;
