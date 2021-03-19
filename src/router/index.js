@@ -17,9 +17,10 @@ const routes = [
   },
   {
     path: "/coaches",
-    name: "CoachesListpage",
+    name: "CoachesPage",
+    beforeEnter:()=> store.dispatch("loadCoachesData"),
     meta: { requiresAuth: true },
-    component: () => import("../views/CoachesListPage.vue"),
+    component: () => import("../views/CoachesPage.vue"),
   },
   {
     path: "/coaches/:id",
@@ -71,6 +72,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (isUserAuth) {
       // console.log("user is logged in");
+      
       return next();
     } else {
       // console.log("Access denied!");

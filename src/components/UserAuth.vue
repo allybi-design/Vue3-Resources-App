@@ -1,6 +1,8 @@
 <template>
-  <button v-if="!isAuth" class="btn btn-primary" @click="logIn">Login</button>
-  <button v-if="isAuth" class="btn btn-primary" @click="logOut">LogOut</button>
+  <button v-if="!isUserAuth" class="btn btn-primary" @click="logIn">
+    Login/Register
+  </button>
+  <button v-if="isUserAuth" class="btn btn-primary" @click="logOut">LogOut</button>
 </template>
 
 <script>
@@ -11,19 +13,19 @@ export default {
 
   computed: {
     ...mapGetters({
-      isAuth: "getIsUserAuth",
+      isUserAuth: "getIsUserAuth",
+      // isUser: "getUser",
     }),
   },
   methods: {
-    ...mapActions(["signIn", "signOut"]),
+    ...mapActions(["signOut", "toggleModal"]),
 
     logIn() {
-      this.signIn();
-      this.$router.push("/coaches")
+      this.toggleModal();
     },
     logOut() {
       this.signOut();
-      this.$router.push("/")
+      this.$router.push("/");
     },
   },
 };

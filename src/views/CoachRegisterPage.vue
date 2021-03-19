@@ -3,8 +3,9 @@
     <header class="text-center">
       <h1>Register as a New Coach</h1>
     </header>
-
-    <CoachForm @saveFormData="saveFormData" />
+    <BaseCard shadow>
+      <CoachForm @saveFormData="saveFormData" />
+    </BaseCard>
   </BaseCard>
 </template>
 
@@ -16,10 +17,10 @@ export default {
   components: {
     CoachForm,
   },
+
   methods: {
     saveFormData(formData) {
-      this.$store.dispatch("addCoach", formData)
-      // console.log(formData);
+      this.$store.dispatch("saveNewCoach", formData);
     },
   },
 };
