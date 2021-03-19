@@ -1,4 +1,4 @@
-debugger
+<!-- debugger -->
 
 <template>
   <NavBar />
