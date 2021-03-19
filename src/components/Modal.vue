@@ -1,31 +1,29 @@
 <template>
-  <div>
-    <transition name="bg-fade-Anim">
-      <div v-if="open" class="modal-bg" @click="closeModal"></div>
-    </transition>
+  <transition-group name="bg-fade-Anim">
+    <div key="bg" class="modal-bg" @click="closeModal" />
 
-    <transition name="dialog-slide-Anim">
-      <div class="modal-slot" v-if="open" @click="closeModal">
-        <slot></slot>
-      </div>
-    </transition>
-  </div>
+    <div key="slot" class="container">
+      <slot />
+    </div>
+  </transition-group>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "Modal",
-  props: ["open"],
-  emits: ["closeModal"],
   methods: {
+    ...mapActions(["toggleModal"]),
+
     closeModal() {
-      this.$emit("closeModal");
+      this.toggleModal();
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
 .modal-bg {
   position: fixed;
   top: 0px;
@@ -37,17 +35,16 @@ export default {
 }
 
 .modal-slot {
-  position: fixed;
-  top: 30vh;
-  width: 30rem;
-  left: calc(50% - 15rem);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 3px;
   padding: 1rem;
-  background-color: white;
-  z-index: 100;
+  border-radius: 4px;
   border: none;
+  z-index: 10;
+  background-color: white;
 }
 
 .dialog-slide-Anim-enter-active {
@@ -59,15 +56,15 @@ export default {
 }
 
 .bg-fade-Anim-enter-active {
-  animation: bg-fade 0.1s ease-out;
+  animation: bg-fade 2s ease-out;
 }
 .bg-fade-Anim-leave-active {
-  animation: bg-fade 0.5s ease-in reverse;
+  animation: bg-fade 2s ease-in reverse;
 }
 
 @keyframes dialogSlide {
   0% {
-    transform: translateY(125px);
+    transform: translateY(200px);
   }
 
   100% {

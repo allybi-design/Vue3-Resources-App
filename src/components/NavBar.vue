@@ -4,11 +4,6 @@
       <router-link class="navbar-brand" to="/">
         <fa-layers full-width class="fa-2x">
           <fa-icon :icon="runningIcon" />
-          <!-- <fa-layers-text
-            class="text-danger"
-            transform="shrink-4"
-            value="User Secret"
-          /> -->
         </fa-layers>
       </router-link>
 
@@ -32,6 +27,7 @@
       </div>
       >
 
+      <p class="text-white">{{ userId }}</p>
       <div class="d-flex">
         <userAuth />
       </div>
@@ -58,8 +54,8 @@ export default {
   },
   computed: {
     ...mapGetters({
+      userId: "getUserId",
       isAuth: "getIsUserAuth",
-      cartQty: "getCartQty",
     }),
   },
 };

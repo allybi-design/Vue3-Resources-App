@@ -1,36 +1,32 @@
 <template>
-  <section>
-    <CoachFilter @filtersChanged="setFilters" />
-  </section>
+  <CoachFilter @filtersChanged="setFilters" />
 
-  <section>
-    <BaseCard>
-      <div class="controls">
-        <BaseButton olColor="primary" class="mb-4">
-          <router-link to="/coach-register">
-            Register as a Coach
-          </router-link>
-        </BaseButton>
-      </div>
-      <ul class="list-group" v-if="hasCoaches">
-        <CoachsList
-          v-for="coach in filteredCoaches"
-          :key="coach.id"
-          :id="coach.id"
-          :firstName="coach.firstName"
-          :lastName="coach.lastName"
-          :rate="coach.hourlyRate"
-          :areas="coach.areas"
-        />
-      </ul>
-      <h3 v-else>No Coaches Found</h3>
-    </BaseCard>
-  </section>
+  <BaseCard>
+    <div class="controls">
+      <BaseButton v-if="!isUserCoach" olColor="primary" class="mb-4">
+        <router-link to="/coach-register">
+          Register as a Coach
+        </router-link>
+      </BaseButton>
+    </div>
+    <ul class="list-group" v-if="hasCoaches">
+      <CoachsList
+        v-for="coach in filteredCoaches"
+        :key="coach.uid"
+        :coach="coach"
+      />
+    </ul>
+    <h3 v-else>No Coaches Found</h3>
+  </BaseCard>
+
+ 
 </template>
 
 <script>
 import CoachsList from "../components/CoachsList";
 import CoachFilter from "../components/CoachFilter";
+
+import { mapGetters } from "vuex";
 
 export default {
   name: "CoachesListPage",
@@ -48,9 +44,15 @@ export default {
     };
   },
   computed: {
+    ...mapGetters({
+      userId: "getUserId",
+      isUserCoach: "getIsUserCoach",
+      hasCoaches: "getHasCoaches",
+      coaches : "getCoaches"
+    }),
+
     filteredCoaches() {
-      const coaches = this.$store.getters.getCoaches;
-      return coaches.filter((coach) => {
+      return this.coaches.filter((coach) => {
         if (this.activeFilters.frontend && coach.areas.includes("frontend")) {
           return true;
         }
@@ -62,9 +64,6 @@ export default {
         }
         return false;
       });
-    },
-    hasCoaches() {
-      return this.$store.getters.hasCoaches;
     },
   },
   methods: {

@@ -1,3 +1,5 @@
+debugger
+
 <template>
   <NavBar />
   <div class="container mt-3">

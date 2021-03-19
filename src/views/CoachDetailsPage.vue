@@ -66,7 +66,7 @@ export default {
       return require(`@/assets/img/${this.selectedCoach.avatar.toLowerCase()}`);
     },
     contactLink() {
-      return `${this.$route.path}/contact`;
+      return `${this.$router.path}/contact`;
     },
   },
 };

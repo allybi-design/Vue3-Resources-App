@@ -3,9 +3,12 @@
     <li class="d-flex justify-content-between align-items-end">
       <div class="details">
         <h3>{{ fullName }}</h3>
-        <h4>£{{ rate }}/hour</h4>
-
-        <div class="btn-group" v-for="area in areas" :key="area">
+        <h4>£{{ coach.hourlyRate }}/hour</h4>
+        <!-- <p>{{ coach.firstName }}'s Uid is:{{ coach.uid }}</p> -->
+        <p v-if="isUserCoach">
+          Your already registered with us! - {{ userId }}
+        </p>
+        <div class="btn-group" v-for="area in coach.areas" :key="area">
           <BaseButton
             size="sm"
             bgColor="warning"
@@ -20,7 +23,9 @@
 
       <div class="actions">
         <BaseButton olColor="primary">
-          <router-link :to="contactLink">Contact - {{ firstName }} </router-link>
+          <router-link :to="contactLink"
+            >Contact - {{ coach.firstName }}
+          </router-link>
         </BaseButton>
 
         <BaseButton olColor="primary">
@@ -32,21 +37,26 @@
 </template>
 
 <script>
-import BaseButton from "./BaseButton.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  name: "CoachList",
-  props: ["id", "firstName", "lastName", "rate", "areas"],
-  components: { BaseButton },
+  name: "CoachListComp",
+  props: ["coach"],
+
   computed: {
+    ...mapGetters({
+      userId: "getUserId",
+      isUserCoach: "getIsUserCoach",
+    }),
+
     fullName() {
-      return `${this.firstName} ${this.lastName}`;
+      return `${this.coach.firstName} ${this.coach.lastName}`;
     },
     contactLink() {
-      return `${this.$route.path}/${this.id}/contact`;
+      return `${this.$route.path}/${this.userId}/contact`;
     },
     detailsLink() {
-      return `${this.$route.path}/${this.id}`;
+      return `${this.$route.path}/${this.userId}`;
     },
   },
 };
