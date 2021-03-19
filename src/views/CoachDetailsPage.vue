@@ -71,9 +71,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.text-justify {
-  text-align: justify;
-}
-</style>
