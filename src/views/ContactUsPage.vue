@@ -1,6 +1,6 @@
 <template>
   <main class="text-center mt-5">
-    <h1>Contact Us Page</h1>
+    <h1>Contact Us Page!!!!!</h1>
     <BaseButton v-if="!isUserAuth" bgColor="primary" @click="openModal">
       Click to Open Spinner
     </BaseButton>
