@@ -30,7 +30,6 @@ const auth = {
           .then((userCredential) => {
             commit("SET_AUTH", { auth: true, user: userCredential.user.uid });
             dispatch("toggleModal");
-            // dispatch("loadState");
             router.push("/coaches");
           });
       } catch (error) {

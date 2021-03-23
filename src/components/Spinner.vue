@@ -1,10 +1,11 @@
+
 <template>
   <Modal v-if="isModalOpen">
     <div class="spinner">
       <fa-icon
         :icon="runningIcon"
         size="10x"
-        spin="true"
+        spin
         class="text-white"
       />
     </div>
@@ -17,7 +18,6 @@ import { faSync } from "@fortawesome/free-solid-svg-icons";
 import { mapGetters } from "vuex";
 export default {
   name: "Spinner",
-  // props: ["isModelOpen"],
   data() {
     return {
       runningIcon: faSync,
@@ -31,7 +31,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .spinner {
   position: relative;
   display: flex;
@@ -43,6 +43,6 @@ export default {
   border-radius: 4px;
   border: none;
   z-index: 10;
-
 }
+
 </style>

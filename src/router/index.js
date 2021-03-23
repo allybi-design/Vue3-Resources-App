@@ -8,17 +8,12 @@ const routes = [
   {
     path: "/",
     name: "HomePage",
+    beforeEnter: () => store.dispatch("loadCoachesData"),
     component: HomePage,
-  },
-  {
-    path: "/contact-us",
-    name: "ContactUsPage",
-    component: () => import("../views/ContactUsPage.vue"),
   },
   {
     path: "/coaches",
     name: "CoachesPage",
-    beforeEnter:()=> store.dispatch("loadCoachesData"),
     meta: { requiresAuth: true },
     component: () => import("../views/CoachesPage.vue"),
   },
@@ -38,7 +33,7 @@ const routes = [
     ],
   },
   {
-    path: "/coach-register",
+    path: "/register",
     name: "CoachRegisterPage.",
     meta: { requiresAuth: true },
     component: () => import("../views/CoachRegisterPage.vue"),
@@ -48,6 +43,11 @@ const routes = [
     name: "Requests",
     meta: { requiresAuth: true },
     component: () => import("../views/RequestsPage.vue"),
+  },
+  {
+    path: "/contact-us",
+    name: "ContactUsPage",
+    component: () => import("../views/ContactUsPage.vue"),
   },
   {
     path: "/:notFound(.*)",
@@ -72,7 +72,6 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (isUserAuth) {
       // console.log("user is logged in");
-      
       return next();
     } else {
       // console.log("Access denied!");
