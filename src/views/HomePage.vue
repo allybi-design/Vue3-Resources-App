@@ -15,7 +15,7 @@ import RegisterForm from "@/components/RegisterForm.vue";
 import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: "HomePage",
+  name: "HomePageeeee",
   components: {
     RegisterForm,
   },
