@@ -6,7 +6,7 @@
         <h4>£{{ coach.hourlyRate }}/hour</h4>
         <!-- <p>{{ coach.firstName }}'s Uid is:{{ coach.uid }}</p> -->
         <p v-if="isUserCoach">
-          Your already registered with us! - {{ userId }}
+          Your already registered with us! - {{ coach.uid }}
         </p>
         <div class="btn-group" v-for="area in coach.areas" :key="area">
           <BaseButton
@@ -23,13 +23,15 @@
 
       <div class="actions">
         <BaseButton olColor="primary">
-          <router-link :to="contactLink"
+          <router-link :to="`${$route.path}/${coach.uid}/contact`"
             >Contact - {{ coach.firstName }}
           </router-link>
         </BaseButton>
 
         <BaseButton olColor="primary">
-          <router-link :to="detailsLink"> View Details</router-link>
+          <router-link :to="`${$route.path}/${coach.uid}`">
+            View Details</router-link
+          >
         </BaseButton>
       </div>
     </li>
@@ -42,7 +44,6 @@ import { mapGetters } from "vuex";
 export default {
   name: "CoachListComp",
   props: ["coach"],
-
   computed: {
     ...mapGetters({
       userId: "getUserId",
@@ -52,14 +53,12 @@ export default {
     fullName() {
       return `${this.coach.firstName} ${this.coach.lastName}`;
     },
-    contactLink() {
-      return `${this.$route.path}/${this.userId}/contact`;
-    },
-    detailsLink() {
-      return `${this.$route.path}/${this.userId}`;
-    },
+    // contactLink() {
+    //   return `${this.$route.path}/${this.userId}/contact`;
+    // },
+    // detailsLink() {
+    //   return `${this.$route.path}/${this.userId}`;
+    // },
   },
 };
 </script>
-
-

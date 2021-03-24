@@ -2,11 +2,12 @@
   <h1 v-if="selectedCoach === undefined">No Coach with that ID found</h1>
 
   <BaseCard v-else shadow>
-    <div class="d-flex justify-content-start align-items-start">
-      <div class="details col-3">
-        <img :src="avatarImage" class="img-thumbnail mx-auto" />
-
-        <h4>{{ fullName }}</h4>
+    <div class="d-flex align-items-start">
+      <div class="details col-2">
+        <div class="text-center">
+          <img :src="avatarImage" class="img-thumbnail mx-auto" />
+          <h4>{{ fullName }}</h4>
+        </div>
 
         <div class="btn-group" v-for="area in selectedCoach.areas" :key="area">
           <BaseButton
@@ -27,16 +28,14 @@
           <p v-html="selectedCoach.description" />
           <h5>I start from £{{ selectedCoach.hourlyRate }}/hour</h5>
           <BaseButton olColor="primary">
-            <router-link :to="{ name: 'CoachContactPage' }"
-              >Contact {{ selectedCoach.firstName }}
-            </router-link>
+            Contact {{ selectedCoach.firstName }}
           </BaseButton>
         </div>
       </div>
     </div>
   </BaseCard>
 
-  <router-view></router-view>
+  <router-view />
 </template>
 
 <script>

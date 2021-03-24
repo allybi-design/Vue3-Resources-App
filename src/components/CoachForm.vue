@@ -103,7 +103,7 @@ import { Form, Field, ErrorMessage } from "vee-validate";
 import { object, string, number } from "yup";
 
 export default {
-  name: "CoachForm",
+  name: "CoachRegisterForm",
   components: {
     Field,
     Form,

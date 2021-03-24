@@ -42,12 +42,10 @@
           </div>
         </div>
         <div class="row text-center my-3">
-          <span v-if="errorMsg" class="text-danger ">{{ errorMsg }}</span>
+          <span v-if="errorMsg" class="text-danger">{{ errorMsg }}</span>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-4">
-          Submit
-        </button>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
       </Form>
     </div>
   </Modal>
@@ -93,7 +91,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(["togglelModal", "createUser", "signIn", "clearErrors"]),
+    ...mapActions(["toggleModal", "createUser", "signIn", "clearErrors"]),
 
     toggleAuth() {
       if (this.authMethod === "Register") {
@@ -103,6 +101,7 @@ export default {
       }
     },
     closeModal() {
+      
       this.toggleModal();
     },
 

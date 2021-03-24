@@ -1,9 +1,9 @@
 <template>
-  <header class="text-center mt-5">
+  <main class="text-center mt-5">
     <BaseButton v-if="!isUserAuth" bgColor="primary" @click="openModal">
       Click to Sign In
     </BaseButton>
-  </header>
+  </main>
 
   <teleport to="body">
     <RegisterForm />
