@@ -1,9 +1,0 @@
-﻿{
-  "agentId": 24,
-  "agentName": "DESKTOP-Q9JAL8D",
-  "poolId": 1,
-  "poolName": "Default",
-  "serverUrl": "https://pipelines.actions.githubusercontent.com/ARGCCvQCN6dSW3Ccze6yUrZs28dw8mIDs9b33ub6cuh3kK4uev",
-  "gitHubUrl": "https://github.com/allybi-design/Vue3---Resources-App",
-  "workFolder": "deploy"
-}
