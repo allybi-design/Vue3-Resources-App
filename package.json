@@ -10,7 +10,8 @@
     "storybook:build": "build-storybook",
     "storybook:serve": "start-storybook -p 6006",
     "ui": "vue ui",
-    "viewBuild": "serve -s dist"
+    "viewBuild": "serve -s dist",
+    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -50,6 +51,7 @@
     "babel-loader": "^8.2.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.8.0",
+    "execa": "^5.0.0",
     "typescript": "~3.9.3",
     "vue-jest": "^5.0.0-0",
     "vue-loader": "^16.1.2",
