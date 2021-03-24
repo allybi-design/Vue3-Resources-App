@@ -23,7 +23,7 @@
 
       <div class="actions">
         <BaseButton olColor="primary">
-          <router-link :to="contactLink"
+          <router-link :to="`${$route.path}/${coach.uid}/contact`"
             >Contact - {{ coach.firstName }}
           </router-link>
         </BaseButton>
@@ -53,12 +53,12 @@ export default {
     fullName() {
       return `${this.coach.firstName} ${this.coach.lastName}`;
     },
-    contactLink() {
-      return `${this.$route.path}/${this.userId}/contact`;
-    },
-    detailsLink() {
-      return `${this.$route.path}/${this.userId}`;
-    },
+    // contactLink() {
+    //   return `${this.$route.path}/${this.userId}/contact`;
+    // },
+    // detailsLink() {
+    //   return `${this.$route.path}/${this.userId}`;
+    // },
   },
 };
 </script>

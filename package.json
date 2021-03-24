@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "ui": "vue ui",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "viewBuild": "serve -s dist", 
+    "storybook:build": "build-storybook",
     "storybook:serve": "start-storybook -p 6006",
-    "storybook:build": "build-storybook"
+    "ui": "vue ui",
+    "viewBuild": "serve -s dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -40,13 +41,17 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "^4.5.11",
+    "@vue/cli-plugin-unit-jest": "^4.5.12",
     "@vue/cli-plugin-vuex": "^4.5.11",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.7",
+    "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.8.0",
+    "typescript": "~3.9.3",
+    "vue-jest": "^5.0.0-0",
     "vue-loader": "^16.1.2",
     "yup": "^0.32.9"
   },
