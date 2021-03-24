@@ -26,8 +26,7 @@
         </ul>
       </div>
       >
-
-      <p class="text-white">{{ userId }}</p>
+      
       <div class="d-flex">
         <userAuth />
       </div>
