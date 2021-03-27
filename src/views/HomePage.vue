@@ -1,6 +1,6 @@
 <template>
   <main class="centerPage">
-    <button class="signRegBtn" @click="openModal">Click to Sign In...</button>
+    <button class="signRegBtn" @click="openModal">Click to Sign In (Register)</button>
   </main>
 
   <teleport to="body">

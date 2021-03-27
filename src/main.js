@@ -20,7 +20,7 @@ import {
 } from "@fortawesome/vue-fontawesome";
 
 const app = createApp(App);
-// app.config.performance = true
+app.config.performance = true
 
 app.component("BaseCard", BaseCard);
 app.component("BaseButton", BaseButton);
