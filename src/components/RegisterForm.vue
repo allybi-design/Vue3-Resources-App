@@ -1,6 +1,6 @@
 <template>
-  <Modal v-if="isModalOpen">
-    <div class="modal-slot">
+  <Modal>
+    <div class="centerPage w-50 bg-white">
       <button type="button" class="btn-close" @click="closeModal"></button>
       <Form @submit="submitForm" :validation-schema="schema">
         <div class="row">
@@ -81,13 +81,8 @@ export default {
   computed: {
     ...mapGetters({
       errorMsg: "getError",
-      isModalOpen: "getIsModalOpen",
     }),
 
-    // disabled() {
-    //   // return this.email === "" || this.password === "" ? true : false;
-    //   return useIsFormValid();
-    // },
   },
 
   methods: {
@@ -101,7 +96,6 @@ export default {
       }
     },
     closeModal() {
-      
       this.toggleModal();
     },
 

@@ -27,4 +27,14 @@ a.active,
 a.exact-active {
   text-decoration: underline !important;
 }
+
+.centerPage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border-radius: 4px;
+
+}
 </style>

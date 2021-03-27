@@ -1,12 +1,10 @@
 <template>
-  <main class="centered">
-    <!-- <BaseButton v-if="!isUserAuth" bgColor="primary" @click="openModal"> -->
-    Click to Sign In
-    <!-- </BaseButton> -->
+  <main class="centerPage">
+    <button class="signRegBtn" @click="openModal">Click to Sign In...</button>
   </main>
 
   <teleport to="body">
-    <RegisterForm />
+    <RegisterForm v-if="isModalOpen" />
   </teleport>
 </template>
 
@@ -25,6 +23,7 @@ export default {
   computed: {
     ...mapGetters({
       isUserAuth: "getIsUserAuth",
+      isModalOpen: "getIsModalOpen",
     }),
   },
   methods: {
@@ -37,11 +36,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
-main.centered {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
+<style lang="css">
+.signRegBtn {
+  font-size: 3em;
+  padding: 0.25em 1.75em;
+  border-radius: 100px;
+  font-style: italic;
+  background-color: transparent;
+  color: white;
+  border: 2px solid #fff;
+  align-self: center;
 }
 </style>
