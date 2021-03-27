@@ -1,8 +1,8 @@
 <template>
-  <main class="text-center mt-5">
-    <BaseButton v-if="!isUserAuth" bgColor="primary" @click="openModal">
-      Click to Sign In
-    </BaseButton>
+  <main class="centered">
+    <!-- <BaseButton v-if="!isUserAuth" bgColor="primary" @click="openModal"> -->
+    Click to Sign In
+    <!-- </BaseButton> -->
   </main>
 
   <teleport to="body">
@@ -37,4 +37,11 @@ export default {
 };
 </script>
 
-
+<style lang="scss">
+main.centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+</style>

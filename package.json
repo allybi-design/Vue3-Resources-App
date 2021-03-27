@@ -9,9 +9,6 @@
     "lint": "vue-cli-service lint",
     "storybook:build": "build-storybook",
     "storybook:serve": "start-storybook -p 6006",
-    "ui": "vue ui",
-    "viewBuild": "serve -s dist",
-    "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",

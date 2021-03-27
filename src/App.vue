@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style>
+body {
+  background: url("./assets/img/space-generic-1.jpg") no-repeat 0 0 / cover;
+}
+
 a {
   text-decoration: none !important;
 }
